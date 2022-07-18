@@ -1,4 +1,6 @@
-import { render } from '@redwoodjs/testing/web'
+import { render, screen } from '@redwoodjs/testing/web'
+
+import { ARTICLE1 } from '../ArticlesCell/ArticlesCell.mock'
 
 import Article from './Article'
 
@@ -7,8 +9,20 @@ import Article from './Article'
 
 describe('Article', () => {
   it('renders successfully', () => {
-    expect(() => {
-      render(<Article />)
-    }).not.toThrow()
+    render(<Article article={ARTICLE1} />)
+
+    expect(screen.getByText(ARTICLE1.title)).toBeInTheDocument()
+    expect(screen.getByText(ARTICLE1.body)).toBeInTheDocument()
+  })
+
+  it('renders a summary of a blog post', () => {
+    render(<Article article={ARTICLE1} summary={true} />)
+
+    expect(screen.getByText(ARTICLE1.title)).toBeInTheDocument()
+    expect(
+      screen.getByText(
+        'Neutra tacos hot chicken prism raw denim, put a bird on it enamel pin post-ironic vape cred DIY. Str...'
+      )
+    ).toBeInTheDocument()
   })
 })

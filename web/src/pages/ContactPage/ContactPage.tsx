@@ -68,6 +68,7 @@ const ContactPage = () => {
           name="name"
           validation={{ required: true }}
           errorClassName="error"
+          className="formField"
         />
         <FieldError name="name" className="error" />
 
@@ -84,6 +85,7 @@ const ContactPage = () => {
             },
           }}
           errorClassName="error"
+          className="formField"
         />
         <FieldError name="email" className="error" />
 
@@ -94,9 +96,12 @@ const ContactPage = () => {
           name="message"
           validation={{ required: true }}
           errorClassName="error"
+          className="formField"
         />
         <FieldError name="message" className="error" />
-        <Submit disabled={loading}>Save</Submit>
+        <Submit disabled={loading} className="mt-3">
+          Save
+        </Submit>
       </Form>
     </>
   )

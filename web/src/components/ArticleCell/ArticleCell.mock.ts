@@ -1,6 +1,5 @@
-// Define your own mock data here:
+import { ARTICLE1 } from '../ArticlesCell/ArticlesCell.mock'
+
 export const standard = (/* vars, { ctx, req } */) => ({
-  article: {
-    id: 42,
-  },
+  article: ARTICLE1,
 })

@@ -9,7 +9,7 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
   const { isAuthenticated, currentUser, logOut } = useAuth()
 
   return (
-    <>
+    <div className="m-7">
       <header>
         <div className="flex-between">
           <h1>
@@ -42,7 +42,7 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
         </nav>
       </header>
       <main>{children}</main>
-    </>
+    </div>
   )
 }
 
