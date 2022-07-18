@@ -33,7 +33,9 @@ const SignupPage = () => {
   const onSubmit = async (data) => {
     const response = await signUp({ ...data })
 
-    if (response.message) {
+    if (response.message && response.message === 'Signup disabled') {
+      toast.error(response.message)
+    } else if (response.message) {
       toast(response.message)
     } else if (response.error) {
       toast.error(response.error)
@@ -49,6 +51,7 @@ const SignupPage = () => {
 
       <main className="rw-main">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
+
         <div className="rw-scaffold rw-login-container">
           <div className="rw-segment">
             <header className="rw-segment-header">
