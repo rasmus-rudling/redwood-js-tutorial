@@ -2,6 +2,8 @@ import type { Post } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
 
+import CommentsCell from 'src/components/CommentsCell'
+
 interface Props {
   article: Post
   summary?: boolean
@@ -22,7 +24,11 @@ const Article = ({ article, summary = false }: Props) => {
       <div className="font-light">
         {summary ? truncate(article.body, 100) : article.body}
       </div>
-      {/* <div>Posted at: {article.createdAt}</div> */}
+      {!summary && (
+        <div className="mt-5">
+          <CommentsCell />
+        </div>
+      )}
     </article>
   )
 }
