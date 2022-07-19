@@ -1,15 +1,11 @@
-import type { QueryResolvers, CommentResolvers } from 'types/graphql'
+import type { CommentResolvers } from 'types/graphql'
 
 import { db } from 'src/lib/db'
 
-export const comments: QueryResolvers['comments'] = () => {
-  return db.comment.findMany()
-}
-
-export const comment: QueryResolvers['comment'] = ({ id }) => {
-  return db.comment.findUnique({
-    where: { id },
-  })
+export const comments = ({
+  postId,
+}: Required<Pick<Prisma.CommentWhereInput, 'postId'>>) => {
+  return db.comment.findMany({ where: { postId } })
 }
 
 interface CreateCommentArgs {
@@ -32,4 +28,3 @@ export const Comment: CommentResolvers = {
   post: (_obj, { root }) =>
     db.comment.findUnique({ where: { id: root.id } }).post(),
 }
-

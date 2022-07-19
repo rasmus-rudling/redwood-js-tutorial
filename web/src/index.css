@@ -88,9 +88,3 @@ input.error, textarea.error {
 input, textarea {
   border: 1px solid black;
 }
-
-button {
-  background-color: rgb(196, 196, 196) !important;
-  padding: 3px;
-  border-radius: 3px;
-}

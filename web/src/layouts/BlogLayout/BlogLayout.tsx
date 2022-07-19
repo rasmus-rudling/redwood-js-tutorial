@@ -1,5 +1,6 @@
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
+import { Toaster } from '@redwoodjs/web/dist/toast'
 
 type BlogLayoutProps = {
   children?: React.ReactNode
@@ -10,6 +11,7 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
 
   return (
     <div className="m-7">
+      <Toaster />
       <header>
         <div className="flex-between">
           <h1>
@@ -18,12 +20,18 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
           {isAuthenticated ? (
             <div>
               <span>Logged in as {currentUser.email}</span>{' '}
-              <button type="button" onClick={logOut}>
+              <button
+                type="button"
+                className="bg-gray-300 p-1 rounded"
+                onClick={logOut}
+              >
                 Logout
               </button>
             </div>
           ) : (
-            <Link to={routes.login()}>Login</Link>
+            <Link to={routes.login()} className="bg-gray-300 p-1 rounded">
+              Login
+            </Link>
           )}
         </div>
 
